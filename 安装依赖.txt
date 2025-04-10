@@ -1,0 +1,3 @@
+npm init -y       初始化
+
+npm install express body-parser multer axios form-data cors sharp dotenv   安装依赖
