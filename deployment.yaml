@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: your-backend-app
+  labels:
+    app: your-backend-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: your-backend-app
+  template:
+    metadata:
+      labels:
+        app: your-backend-app
+    spec:
+      containers:
+      - name: your-backend-container
+        image: your-dockerhub-username/your-image-name:tag
+        ports:
+        - containerPort: 3000
+        env:
+        - name: RECRAFT_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: recraft-api-secret
+              key: RECRAFT_API_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: your-backend-service
+spec:
+  selector:
+    app: your-backend-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer
