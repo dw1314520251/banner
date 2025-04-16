@@ -15,7 +15,7 @@ app.use(cors());
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-const RECRAFT_API_KEY = process.env.RECRAFT_API_KEY;
+const RECRAFT_API_KEY = process.env.RECRAFT_API_KEY || '';
 const RECRAFT_API_URL = 'https://external.api.recraft.ai/v1/images/imageToImage';
 
 app.post('/generate-image', upload.single('image'), async (req, res) => {console.log('req.file:', req.file); 
