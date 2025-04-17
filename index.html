@@ -417,7 +417,7 @@ function setCookie(name, value, days) {
 // 初始化剩余生成次数
 let remainingGenerations = parseInt(getCookie('remainingGenerations'));
 if (isNaN(remainingGenerations)) {
-    remainingGenerations = 5;
+    remainingGenerations = 20;
     setCookie('remainingGenerations', remainingGenerations, 1);
 }
 
