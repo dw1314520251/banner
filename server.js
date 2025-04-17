@@ -79,6 +79,10 @@ app.post('/generate-image', upload.single('image'), async (req, res) => {console
     }
 });
 
+app.get('/hello', (req, res) => {
+    res.status(200).json({ message: "Hello, Vercel!" });
+});
+
 app.listen(port, () => {
     console.log(`服务器运行在端口 ${port}`);
 });
